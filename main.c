@@ -6,17 +6,24 @@
 int	main()
 {
     char	board[3][3];
-    int	win;
+    int	win, menuop;
 
-    init_board(board);
-    win = game_loop(board);
-    system("clear");
-    display_board(board);
-    if (win == 0 || win == 1)
-        printf("Player %d won!\n", win + 1);
-    else if (win == 2)
-        printf("Draw! No winner this time :'(\n");
-    return (0);
+	menuop = display_menu();
+	switch(menuop);
+	{    
+	case 1:
+		init_board(board);
+		win = game_loop(board);
+		system("clear");
+		display_board(board);
+		if (win == 0 || win == 1)
+		    printf("Player %d won!\n", win + 1);
+		else if (win == 2)
+		    printf("Draw! No winner this time :'(\n");
+		return (0);
+	case 2:
+		system("clear");
+		display_highscores();
 }
 
 void	init_board(char board[3][3])
