@@ -1,20 +1,18 @@
 #include <stdio.h>
 #include "tictactoe.h"
+#include <stdlib.h>
 
 void display_highscores(void)
 {
-	int i, hs;
+	int hs;
 	char name[51];
+	FILE *file;
 		
-	system("clear");	
-	FILE *file_numbers;
-	FILE *file_names;
-	file_numbers = fopen ("highscores_numbers.txt", "r");
-	file_names = fopen ("highscores_names.txt", "r");
-	while (!feof(highscores_numbers) && !feof(file_names))
+	system("clear");
+	file = fopen ("scores.txt", "r");
+	while (!feof(file))
 	{
-		fscanf (file_numbers, "%d", &hs);
-		fscanf (file_names, "%s", name);
+		fscanf (file, "%s%d", name, &hs);
 		printf ("%s%10d", name, hs);	
 	}
 	
@@ -25,12 +23,12 @@ int display_menu(void)
 {
 	int op;	
 	system("clear");	
-	printf ("████████╗██╗ ██████╗████████╗ █████╗  ██████╗████████╗ ██████╗ ███████╗");
-	printf ("╚══██╔══╝██║██╔════╝╚══██╔══╝██╔══██╗██╔════╝╚══██╔══╝██╔═══██╗██╔════╝");
-	printf ("   ██║   ██║██║        ██║   ███████║██║        ██║   ██║   ██║█████╗");  
-	printf ("   ██║   ██║██║        ██║   ██╔══██║██║        ██║   ██║   ██║██╔══╝  ");
-	printf("    ██║   ██║╚██████╗   ██║   ██║  ██║╚██████╗   ██║   ╚██████╔╝███████╗");
-	printf("    ╚═╝   ╚═╝ ╚═════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝   ╚═╝    ╚═════╝ ╚══════╝");
+	printf ("████████╗██╗ ██████╗████████╗ █████╗  ██████╗████████╗ ██████╗ ███████╗\n");
+	printf ("╚══██╔══╝██║██╔════╝╚══██╔══╝██╔══██╗██╔════╝╚══██╔══╝██╔═══██╗██╔════╝\n");
+	printf ("   ██║   ██║██║        ██║   ███████║██║        ██║   ██║   ██║█████╗\n");  
+	printf ("   ██║   ██║██║        ██║   ██╔══██║██║        ██║   ██║   ██║██╔══╝  \n");
+	printf("   ██║   ██║╚██████╗   ██║   ██║  ██║╚██████╗   ██║   ╚██████╔╝███████╗\n");
+	printf("   ╚═╝   ╚═╝ ╚═════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝   ╚═╝    ╚═════╝ ╚══════╝\n");
  
 	printf ("1 - PLAY\n2 - HIGHSCORES\n3 - CREDITS\n4 - QUIT\n");
 	scanf ("%d", &op);
