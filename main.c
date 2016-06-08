@@ -9,7 +9,7 @@ int	main()
     int	win, menuop;
 
 	menuop = display_menu();
-	switch(menuop);
+	switch(menuop)
 	{    
 	case 1:
 		init_board(board);
@@ -24,6 +24,9 @@ int	main()
 	case 2:
 		system("clear");
 		display_highscores();
+		return 0;
+	}
+
 }
 
 void	init_board(char board[3][3])
