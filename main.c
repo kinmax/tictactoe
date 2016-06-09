@@ -7,23 +7,27 @@ struct strscores
 {
 	char name1[51];
 	int score;
-}scores[11];
+}scores[11], hold;
 
 int	main()
 {
-    char	board[3][3], name[51];
-    int	i, win, menuop, p1 = 0, p2 = 0, replay = 1;
+    char board[3][3], name[51];
+    int	i, win, menuop, p1 = 0, p2 = 0, replay = 1, pass;
 	FILE* file;
-	file = fopen ("scores.txt", "a+");
-
-	for (i = 0; i < 10; i++)
-	{
-		fscanf (file, "%s%d", scores[i].name1, &scores[i].score);
-	}	
 	menuop = display_menu();
+	
 	switch(menuop)
 	{    
-	case 1:
+	case 1:			/*play*/
+		file = fopen ("scores.txt", "r");
+		scores[10].score = -1;
+
+		for (i = 0; i < 10; i++)
+		{
+			fscanf (file, "%s%d", scores[i].name1, &scores[i].score);
+		}
+		fclose (file);
+		file = fopen ("scores.txt", "w");	
 		while (replay == 1)
 		{		
 			init_board(board);
@@ -49,7 +53,7 @@ int	main()
 			printf ("Enter your name, champion: ");
 			getchar();
 			fgets (name, 51, stdin);
-			scores[10].name1 = name;//usar strcpy
+			strcpy(name, scores[10].name1);
 			scores[10].score = p1;
 			printf ("\n");
 		}	
@@ -59,17 +63,39 @@ int	main()
 			printf ("Enter your name, champion: ");
 			getchar();			
 			fgets (name, 51, stdin);
-			scores[10].name1 = name;//usar strcpy
+			strcpy(name, scores[10].name1);
 			scores[10].score = p2;
 			printf ("\n");
 			
 		}
 		else
+		{
 			printf ("We have no champion this time!");
+		}
+		
+		/*Bubble Sort*/
+		for (pass = 1; pass < 11; pass++)
+		{
+			for (i = 0; i < 10; i++)
+			{
+				if (scores[i].score < scores[i+1].score)
+				{
+					hold = scores[i];
+					scores[i] = scores[i+1];
+					scores[i+1] = hold;
+				}
+			}
+		}
+		
+		for (i = 0; i < 10; i++)
+		{
+			fprintf(file, "%s\n%d", scores[i].name1, scores[i].score);
+		}
+		
 		fclose (file);
 		break;
 		
-	case 2:
+	case 2:			/*highscores*/
 		system("clear");
 		display_highscores();
 		break;
@@ -140,3 +166,5 @@ int	game_loop(char board[3][3])
     }
     return (0);
 }
+
+

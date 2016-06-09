@@ -14,4 +14,3 @@ extern int	check_diagonal_full(char board[3][3], int player);
 extern int	check_winner(char board[3][3], int player);
 extern void    init_board(char board[3][3]);
 extern int     game_loop(char board[3][3]);
-

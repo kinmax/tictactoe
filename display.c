@@ -10,10 +10,12 @@ void display_highscores(void)
 		
 	system("clear");
 	file = fopen ("scores.txt", "r");
+	printf ("%s%10s\n", "Name", "Wins");	
 	while (!feof(file))
 	{
-		fscanf (file, "%s%d", name, &hs);
-		printf ("%s%10d", name, hs);	
+		fscanf (file, "%d", &hs);
+		fgets (name, 51, file);
+		printf ("%s%10d\n", name, hs);	
 	}
 	
 	

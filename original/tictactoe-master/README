@@ -1,0 +1,3 @@
+step 1 : Utiliser la commande make pour compiler le programme
+step 2 : Executer ensuite le binaire avec la commande "./tictactoe" dans un terminal qui gère 256 couleurs
+step 3 : Enjoy :)
