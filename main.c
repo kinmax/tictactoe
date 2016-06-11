@@ -50,20 +50,18 @@ int	main()
 		if (p1 > p2)
 		{
 			printf ("Player 1 is the champion!\n");			
-			printf ("Enter your name, champion: ");
-			getchar();
-			fgets (name, 51, stdin);
-			strcpy(name, scores[10].name1);
+			printf ("Enter your name, champion (Without spaces, new line or tab - 3 characters): ");
+			scanf("%s", name);
+			strcpy(scores[10].name1, name);
 			scores[10].score = p1;
 			printf ("\n");
 		}	
 		else if (p1 < p2)
 		{
 			printf ("Player 2 is the champion!");
-			printf ("Enter your name, champion: ");
-			getchar();			
-			fgets (name, 51, stdin);
-			strcpy(name, scores[10].name1);
+			printf ("Enter your name, champion (Without spaces, new line or tab - 3 characters): ");			
+			scanf ("%s", name);
+			strcpy(scores[10].name1, name);
 			scores[10].score = p2;
 			printf ("\n");
 			
@@ -89,7 +87,7 @@ int	main()
 		
 		for (i = 0; i < 10; i++)
 		{
-			fprintf(file, "%s\n%d", scores[i].name1, scores[i].score);
+			fprintf(file, "%s       %d\n", scores[i].name1, scores[i].score);
 		}
 		
 		fclose (file);

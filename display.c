@@ -4,8 +4,7 @@
 
 void display_highscores(void)
 {
-	int hs;
-	char name[51];
+	char scores[51];
 	FILE *file;
 		
 	system("clear");
@@ -13,9 +12,8 @@ void display_highscores(void)
 	printf ("%s%10s\n", "Name", "Wins");	
 	while (!feof(file))
 	{
-		fscanf (file, "%d", &hs);
-		fgets (name, 51, file);
-		printf ("%s%10d\n", name, hs);	
+		fgets (scores, 51, file);
+		printf ("%s\n", scores);	
 	}
 
 	
