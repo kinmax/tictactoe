@@ -99,6 +99,11 @@ int	main()
 		system("clear");
 		display_highscores();
 		break;
+	case 3:
+		system("clear");
+		printf ("Original game made by Gaelith, available at https://github.com/Gaelith/tictactoe\nModifications made by Kin Max Piamolini Gusmão, as the final work for Laboratório de Programação I\nModified code available at https://github.com/kinmax/tictactoe\n");
+		break;
+	default: break;
 	}
 	return 0;
 

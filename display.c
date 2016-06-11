@@ -17,7 +17,7 @@ void display_highscores(void)
 		fgets (name, 51, file);
 		printf ("%s%10d\n", name, hs);	
 	}
-	
+
 	
 }
 
