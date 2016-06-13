@@ -4,35 +4,35 @@
 
 void display_highscores(void)
 {
-	char scores[51];
-	FILE *file;
-		
-	system("clear");
-	file = fopen ("scores.txt", "r");
-	printf ("%s%10s\n", "Name", "Wins");	
-	while (!feof(file))
-	{
-		fgets (scores, 51, file);
-		printf ("%s\n", scores);	
-	}
+    char scores[51];
+    FILE *file;
 
-	
+    system("clear");
+    file = fopen ("scores.txt", "r");
+    printf ("%s%10s\n", "Name", "      Win Balance");
+    while (!feof(file))
+    {
+        fgets (scores, 51, file);
+        printf ("%s\n", scores);
+    }
+
+
 }
 
 int display_menu(void)
 {
-	int op;	
-	system("clear");	
-	printf ("████████╗██╗ ██████╗████████╗ █████╗  ██████╗████████╗ ██████╗ ███████╗\n");
-	printf ("╚══██╔══╝██║██╔════╝╚══██╔══╝██╔══██╗██╔════╝╚══██╔══╝██╔═══██╗██╔════╝\n");
-	printf ("   ██║   ██║██║        ██║   ███████║██║        ██║   ██║   ██║█████╗\n");  
-	printf ("   ██║   ██║██║        ██║   ██╔══██║██║        ██║   ██║   ██║██╔══╝  \n");
-	printf("   ██║   ██║╚██████╗   ██║   ██║  ██║╚██████╗   ██║   ╚██████╔╝███████╗\n");
-	printf("   ╚═╝   ╚═╝ ╚═════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝   ╚═╝    ╚═════╝ ╚══════╝\n");
- 
-	printf ("1 - PLAY\n2 - HIGHSCORES\n3 - CREDITS\n4 - QUIT\n");
-	scanf ("%d", &op);
-	return (op);
+    int op;
+    system("clear");
+    printf ("████████╗██╗ ██████╗████████╗ █████╗  ██████╗████████╗ ██████╗ ███████╗\n");
+    printf ("╚══██╔══╝██║██╔════╝╚══██╔══╝██╔══██╗██╔════╝╚══██╔══╝██╔═══██╗██╔════╝\n");
+    printf ("   ██║   ██║██║        ██║   ███████║██║        ██║   ██║   ██║█████╗\n");
+    printf ("   ██║   ██║██║        ██║   ██╔══██║██║        ██║   ██║   ██║██╔══╝  \n");
+    printf("   ██║   ██║╚██████╗   ██║   ██║  ██║╚██████╗   ██║   ╚██████╔╝███████╗\n");
+    printf("   ╚═╝   ╚═╝ ╚═════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝   ╚═╝    ╚═════╝ ╚══════╝\n");
+
+    printf ("1 - PLAY\n2 - HIGHSCORES\n3 - CREDITS\n4 - QUIT\n");
+    scanf ("%d", &op);
+    return (op);
 }
 
 void	display_board(char board[3][3])
