@@ -11,8 +11,8 @@ struct strscores
 
 int	main()
 {
-    char board[3][3], name[51];
-    int	i, win, menuop, p1 = 0, p2 = 0, replay = 1, pass;
+    char board[3][3], name[51], replay[71];
+    int	i, win, menuop, p1 = 0, p2 = 0, pass, replayi = 1, k = 0, f;
     FILE* file;
     menuop = display_menu();
 
@@ -27,15 +27,16 @@ int	main()
             fscanf (file, "%s%d", scores[i].name1, &scores[i].score);
         }
         fclose (file);
-        /*As linhas 31 a 36 impedem que os highscores sejam zerados quando o processo for parado em andamento (Ctrl + C)*/
+        /*As linhas 31 a 36 impedem que os highscores sejam apagados quando o processo for parado em andamento (Ctrl + C)*/
         file = fopen ("scores.txt", "w");
         for (i = 0; i < 10; i++)
         {
             fprintf(file, "%s       %d\n", scores[i].name1, scores[i].score);
         }
         fclose (file);
-        while (replay == 1)
+        while (replayi == 1)
         {
+            f = 0;
             init_board(board);
             win = game_loop(board);
             system("clear");
@@ -49,8 +50,33 @@ int	main()
             else if (win == 2)
                 printf("Draw! No winner this time :'(\n");
             printf("Do you wanna play another round? (Y = 1/N = 0)\n");
-            scanf ("%d", &replay);
-
+            while (f == 0)
+            {
+                if (k == 1)
+                {
+                    printf ("Invalid option!\n");
+                }
+                scanf ("%s", replay);
+                if (strlen(replay) > 1)
+                {
+                    k = 1;
+                    f = 0;
+                }
+                else
+                {
+                    replayi = atoi(replay);
+                    if (replayi != 0 && replayi != 1)
+                    {
+                        k = 1;
+                        f = 0;
+                    }
+                    else
+                    {
+                        k = 0;
+                        f = 1;
+                    }
+                }
+            }
         }
         printf ("Number of wins\nPlayer 1: %d\nPlayer 2: %d\n", p1, p2);
         if (p1 > p2)
@@ -64,12 +90,14 @@ int	main()
         }
         else if (p1 < p2)
         {
-            printf ("Player 2 is the champion!");
+
+            printf ("Player 2 is the champion!\n");
             printf ("Enter your name, champion (Without spaces, new line or tab - 3 characters): ");
-            scanf ("%s", name);
+            scanf("%s", name);
             strcpy(scores[10].name1, name);
             scores[10].score = p2-p1;
             printf ("\n");
+
 
         }
         else
@@ -93,7 +121,7 @@ int	main()
         file = fopen ("scores.txt", "w");/*Salva os novos highscores no arquivo*/
         for (i = 0; i < 10; i++)
         {
-            fprintf(file, "%s       %d\n", scores[i].name1, scores[i].score);
+            fprintf(file, "%s%8d\n", scores[i].name1, scores[i].score);
         }
 
         fclose (file);
@@ -176,5 +204,3 @@ int	game_loop(char board[3][3])
     }
     return (0);
 }
-
-

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "tictactoe.h"
 #include <stdlib.h>
+#include <string.h>
 
 void display_highscores(void)
 {
@@ -21,18 +22,45 @@ void display_highscores(void)
 
 int display_menu(void)
 {
-    int op;
-    system("clear");
-    printf ("████████╗██╗ ██████╗████████╗ █████╗  ██████╗████████╗ ██████╗ ███████╗\n");
-    printf ("╚══██╔══╝██║██╔════╝╚══██╔══╝██╔══██╗██╔════╝╚══██╔══╝██╔═══██╗██╔════╝\n");
-    printf ("   ██║   ██║██║        ██║   ███████║██║        ██║   ██║   ██║█████╗\n");
-    printf ("   ██║   ██║██║        ██║   ██╔══██║██║        ██║   ██║   ██║██╔══╝  \n");
-    printf("   ██║   ██║╚██████╗   ██║   ██║  ██║╚██████╗   ██║   ╚██████╔╝███████╗\n");
-    printf("   ╚═╝   ╚═╝ ╚═════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝   ╚═╝    ╚═════╝ ╚══════╝\n");
+    int opi, k = 0, f = 0;
+    char op[71];
+    while (f == 0)
+    {
+        system("clear");
+        printf ("████████╗██╗ ██████╗████████╗ █████╗  ██████╗████████╗ ██████╗ ███████╗\n");
+        printf ("╚══██╔══╝██║██╔════╝╚══██╔══╝██╔══██╗██╔════╝╚══██╔══╝██╔═══██╗██╔════╝\n");
+        printf ("   ██║   ██║██║        ██║   ███████║██║        ██║   ██║   ██║█████╗\n");
+        printf ("   ██║   ██║██║        ██║   ██╔══██║██║        ██║   ██║   ██║██╔══╝  \n");
+        printf("   ██║   ██║╚██████╗   ██║   ██║  ██║╚██████╗   ██║   ╚██████╔╝███████╗\n");
+        printf("   ╚═╝   ╚═╝ ╚═════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝   ╚═╝    ╚═════╝ ╚══════╝\n");
 
-    printf ("1 - PLAY\n2 - HIGHSCORES\n3 - CREDITS\n4 - QUIT\n");
-    scanf ("%d", &op);
-    return (op);
+        printf ("1 - PLAY\n2 - HIGHSCORES\n3 - CREDITS\n4 - QUIT\n");
+        if (k == 1)
+        {
+            printf ("Invalid option!\n");
+        }
+        scanf ("%s", op);
+        if (strlen(op) > 1)
+        {
+            k = 1;
+            f = 0;
+        }
+        else
+        {
+            opi = atoi(op);
+            if (opi != 1 && opi != 2 && opi != 3 && opi != 4)
+            {
+                k = 1;
+                f = 0;
+            }
+            else
+            {
+                k = 0;
+                f = 1;
+            }
+        }
+    }
+    return (opi);
 }
 
 void	display_board(char board[3][3])

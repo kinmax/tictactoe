@@ -1,5 +1,3 @@
-#include <stdlib.h>
-
 # define WHITE	"\033[0m"
 # define YELLOW	"\033[38;5;228m"
 # define BLUE	"\033[38;5;104m"
